@@ -4,26 +4,68 @@
   <meta charset="UTF-8">
   <title>Hakodama</title>
   <link rel="stylesheet" href="styles.css">
-
+  <style>
+    /* TEMPORARY: Inline to ensure splash works instantly */
+    .main-content {
+      display: none;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Splash Logo (Centered and Fullscreen) -->
   <div class="splash">
     <img src="hakodama.png" alt="Hakodama Logo" width="300">
   </div>
 
+  <!-- Site Content -->
+  <div class="wrapper main-content">
+    <!-- Navigation -->
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
 
+    <!-- Main Content -->
+    <main>
+      <!-- Your main content goes here -->
+    </main>
 
-<iframe width="560" height="315"
-  src="https://www.youtube.com/embed/aGCdLKXNF3w"
-  title="YouTube video player"
-  frameborder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowfullscreen>
-</iframe>
+    <!-- Section -->
+    <section>
+      <!-- Your section content goes here -->
+    </section>
 
+    <!-- Sidebar -->
+    <aside>
+      <!-- Optional sidebar content -->
+    </aside>
 
+    <!-- Embedded YouTube Video -->
+    <iframe width="560" height="315"
+      src="https://www.youtube.com/embed/aGCdLKXNF3w"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
 
+    <!-- Footer -->
+    <footer>
+      <!-- Footer content goes here -->
+    </footer>
+  </div>
 
-  
+  <!-- Splash Fade Logic -->
+  <script>
+    setTimeout(() => {
+      document.querySelector('.splash').style.display = 'none';
+      document.querySelector('.main-content').style.display = 'block';
+    }, 2000);
+  </script>
+
 </body>
 </html>
