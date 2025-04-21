@@ -67,5 +67,13 @@
     }, 2000);
   </script>
 
+  <script>
+  fetch('http://mywebserver.local:3000/api/hello')
+    .then(res => res.json())
+    .then(data => {
+      document.body.innerHTML += `<p>${data.message}</p>`;
+    });
+</script>
+
 </body>
 </html>
