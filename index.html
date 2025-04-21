@@ -4,12 +4,6 @@
   <meta charset="UTF-8">
   <title>Hakodama</title>
   <link rel="stylesheet" href="styles.css">
-  <style>
-    /* TEMPORARY: Inline to ensure splash works instantly */
-    .main-content {
-      display: none;
-    }
-  </style>
 </head>
 <body>
 
@@ -58,22 +52,9 @@
       <!-- Footer content goes here -->
     </footer>
   </div>
+<!-- Linking the script files to html code here -->
+<script src="script.js"></script>
 
-  <!-- Splash Fade Logic -->
-  <script>
-    setTimeout(() => {
-      document.querySelector('.splash').style.display = 'none';
-      document.querySelector('.main-content').style.display = 'block';
-    }, 2000);
-  </script>
-
-  <script>
-  fetch('http://mywebserver.local:3000/api/hello')
-    .then(res => res.json())
-    .then(data => {
-      document.body.innerHTML += `<p>${data.message}</p>`;
-    });
-</script>
 
 </body>
 </html>
