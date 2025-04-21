@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <title>Hakodama</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* TEMPORARY: Inline to ensure splash works instantly */
+    .main-content {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
@@ -47,14 +53,20 @@
       allowfullscreen>
     </iframe>
 
+    <!-- Contact Form -->
+    <form id="contact-form">
+      <input type="text" name="name" placeholder="Your name" required>
+      <textarea name="message" placeholder="Your message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+
     <!-- Footer -->
     <footer>
       <!-- Footer content goes here -->
     </footer>
   </div>
-<!-- Linking the script files to html code here -->
-<script src="script.js"></script>
 
-
+  <!-- All JS goes into script.js now -->
+  <script src="script.js"></script>
 </body>
 </html>
