@@ -1,0 +1,27 @@
+ <!--Add the search bad input-->
+ <!--monday april 21 12:03 pm I may bot need this header-->
+
+ <h2>Search posts</h2>
+<input type="text" id="search-bar" placeholder="Search posts..." />
+<div id="blog-posts"></div>
+
+
+<div class="container">
+    <h1>Write a Blog Post</h1>
+  
+    <form id="blog-form" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="Blog title" required>
+        <textarea name="content" placeholder="Write your blog post..." required></textarea>
+        <input type="file" name="image" accept="image/*">
+        <button type="submit">Post</button>
+      </form>
+      
+      <div class="confirmation" id="confirmation"></div>
+      
+      <h2>Recent Posts</h2>
+      <div id="blog-posts"></div>
+  
+  <script src="script.js"></script>
+  
+
+  
