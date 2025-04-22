@@ -5,7 +5,7 @@ setTimeout(() => {
   }, 2000);
   
   // Backend GET test
-  fetch('http://173.174.240.60:3000/api/blog')
+  fetch('http://mywebserver.local:3000/api/hello')
     .then(res => res.json())
     .then(data => {
       document.body.innerHTML += `<p>${data.message}</p>`;
@@ -21,7 +21,7 @@ setTimeout(() => {
       e.preventDefault();
       const formData = new FormData(blogForm);
   
-      const res = await fetch('http://mywebserver.local:3000/api/blog', {
+      const res = await fetch('http://173.174.240.60:3000/api/blog', {
         method: 'POST',
         body: formData
       });
