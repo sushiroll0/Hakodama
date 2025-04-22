@@ -21,7 +21,7 @@ setTimeout(() => {
       e.preventDefault();
       const formData = new FormData(blogForm);
   
-      const res = await fetch('http://173.174.240.60:3000/api/blog', {
+      const res = await fetch('http://mywebserver.local:3000/api/blog', {
         method: 'POST',
         body: formData
       });
