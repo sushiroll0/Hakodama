@@ -8,7 +8,7 @@ if (blogForm) {
     e.preventDefault();
     const formData = new FormData(blogForm);
 
-    const res = await fetch('http://mywebserver.local:3000/api/blog', {
+    const res = await fetch('http://173.174.240.60:3000/api/blog', {
       method: 'POST',
       body: formData
     });
@@ -36,7 +36,7 @@ async function deletePost(id) {
   const confirmed = confirm("Are you sure you want to delete this post?");
   if (!confirmed) return;
 
-  const res = await fetch(`http://mywebserver.local:3000/api/posts/${id}`, {
+  const res = await fetch(`http://173.174.240.60:3000/api/posts/${id}`, {
     method: 'DELETE',
     headers: {
       'x-admin-pass': ADMIN_PASS
@@ -71,7 +71,7 @@ async function editPost(button, id) {
       content: contentEl.textContent.trim()
     };
 
-    const res = await fetch(`http://mywebserver.local:3000/api/posts/${id}`, {
+    const res = await fetch(`http://173.174.240.60:3000/api/posts/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ function renderHashtags(text) {
 }
 
 async function loadPosts(filterTag = null, searchQuery = "") {
-  const res = await fetch('http://mywebserver.local:3000/api/posts');
+  const res = await fetch('http://173.174.240.60:3000/api/posts');
   const posts = await res.json();
 
   if (!postContainer) return;
