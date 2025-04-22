@@ -1,17 +1,29 @@
-// Splash fade logic
-setTimeout(() => {
-  document.querySelector('.splash').style.display = 'none';
-  document.querySelector('.main-content').style.display = 'block';
-}, 2000);
+// ===============================
+// 🌊 SPLASH FADE LOGIC
+// ===============================
+const splash = document.querySelector('.splash');
+const mainContent = document.querySelector('.main-content');
 
-// Backend GET test
-fetch('http://173.174.240.60:3000/api/hello')
+if (splash && mainContent) {
+  setTimeout(() => {
+    splash.style.display = 'none';
+    mainContent.style.display = 'block';
+  }, 2000);
+}
+
+// ===============================
+// 🧪 BACKEND CONNECTION TEST
+// ===============================
+fetch('/api/hello')
   .then(res => res.json())
   .then(data => {
     document.body.innerHTML += `<p>${data.message}</p>`;
-  });
+  })
+  .catch(err => console.error('Backend /api/hello fetch failed:', err));
 
-// Submit new blog post
+// ===============================
+// 📝 SUBMIT NEW BLOG POST
+// ===============================
 const blogForm = document.getElementById('blog-form');
 const confirmation = document.getElementById('confirmation');
 const postContainer = document.getElementById('blog-posts');
@@ -21,7 +33,7 @@ if (blogForm) {
     e.preventDefault();
     const formData = new FormData(blogForm);
 
-    const res = await fetch('http://173.174.240.60:3000/api/blog', {
+    const res = await fetch('/api/blog', {
       method: 'POST',
       body: formData
     });
@@ -41,15 +53,15 @@ if (blogForm) {
 }
 
 // ===============================
-// 🧰 ADMIN TOOLS (Step 3)
+// 🧰 ADMIN TOOLS
 // ===============================
-const ADMIN_PASS = "$Sushi12345"; // CHANGE THIS to match server.js
+const ADMIN_PASS = "$Sushi12345"; // Match this with server.js
 
 async function deletePost(id) {
   const confirmed = confirm("Are you sure you want to delete this post?");
   if (!confirmed) return;
 
-  const res = await fetch(`http://173.174.240.60:3000/api/posts/${id}`, {
+  const res = await fetch(`/api/posts/${id}`, {
     method: 'DELETE',
     headers: {
       'x-admin-pass': ADMIN_PASS
@@ -84,7 +96,7 @@ async function editPost(button, id) {
       content: contentEl.textContent.trim()
     };
 
-    const res = await fetch(`http://173.174.240.60:3000/api/posts/${id}`, {
+    const res = await fetch(`/api/posts/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -111,7 +123,7 @@ function renderHashtags(text) {
 }
 
 async function loadPosts(filterTag = null, searchQuery = "") {
-  const res = await fetch('http://173.174.240.60:3000/api/posts');
+  const res = await fetch('/api/posts');
   const posts = await res.json();
 
   if (!postContainer) return;
@@ -152,7 +164,9 @@ async function loadPosts(filterTag = null, searchQuery = "") {
   });
 }
 
-// Add search listener
+// ===============================
+// 🔍 SEARCH BAR LISTENER
+// ===============================
 const searchInput = document.getElementById('search-bar');
 if (searchInput) {
   searchInput.addEventListener('input', () => {
