@@ -33,20 +33,34 @@ if (blogForm) {
     e.preventDefault();
     const formData = new FormData(blogForm);
 
-    const res = await fetch('/api/blog', {
-      method: 'POST',
-      body: formData
-    });
+    try {
+      const res = await fetch('/api/blog', {
+        method: 'POST',
+        body: formData
+      });
 
-    const result = await res.json();
+      if (!res.ok) {
+        const errorText = await res.text();
+        console.error('Server error:', res.status, errorText);
+        confirmation.textContent = `Error ${res.status}: ${errorText}`;
+        confirmation.style.color = 'red';
+        return;
+      }
 
-    if (result.success) {
-      confirmation.textContent = 'Post submitted!';
-      confirmation.style.color = 'green';
-      blogForm.reset();
-      loadPosts(); // reload posts after new one added
-    } else {
-      confirmation.textContent = 'Failed to post.';
+      const result = await res.json();
+
+      if (result.success) {
+        confirmation.textContent = 'Post submitted!';
+        confirmation.style.color = 'green';
+        blogForm.reset();
+        loadPosts(); // reload posts after new one added
+      } else {
+        confirmation.textContent = 'Failed to post.';
+        confirmation.style.color = 'red';
+      }
+    } catch (err) {
+      console.error('Fetch failed:', err);
+      confirmation.textContent = 'Submission failed.';
       confirmation.style.color = 'red';
     }
   });
@@ -61,19 +75,26 @@ async function deletePost(id) {
   const confirmed = confirm("Are you sure you want to delete this post?");
   if (!confirmed) return;
 
-  const res = await fetch(`/api/posts/${id}`, {
-    method: 'DELETE',
-    headers: {
-      'x-admin-pass': ADMIN_PASS
-    }
-  });
+  try {
+    const res = await fetch(`/api/posts/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'x-admin-pass': ADMIN_PASS
+      }
+    });
 
-  const result = await res.json();
-  if (result.success) {
-    alert('Post deleted.');
-    loadPosts();
-  } else {
-    alert('Failed to delete post.');
+    if (!res.ok) throw new Error('Server error');
+
+    const result = await res.json();
+    if (result.success) {
+      alert('Post deleted.');
+      loadPosts();
+    } else {
+      alert('Failed to delete post.');
+    }
+  } catch (err) {
+    alert('Error deleting post.');
+    console.error(err);
   }
 }
 
@@ -96,21 +117,28 @@ async function editPost(button, id) {
       content: contentEl.textContent.trim()
     };
 
-    const res = await fetch(`/api/posts/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-admin-pass': ADMIN_PASS
-      },
-      body: JSON.stringify(updatedPost)
-    });
+    try {
+      const res = await fetch(`/api/posts/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-admin-pass': ADMIN_PASS
+        },
+        body: JSON.stringify(updatedPost)
+      });
 
-    const result = await res.json();
-    if (result.success) {
-      alert('Post updated.');
-      loadPosts();
-    } else {
-      alert('Failed to update post.');
+      if (!res.ok) throw new Error('Server error');
+
+      const result = await res.json();
+      if (result.success) {
+        alert('Post updated.');
+        loadPosts();
+      } else {
+        alert('Failed to update post.');
+      }
+    } catch (err) {
+      alert('Error updating post.');
+      console.error(err);
     }
   }
 }
@@ -123,45 +151,55 @@ function renderHashtags(text) {
 }
 
 async function loadPosts(filterTag = null, searchQuery = "") {
-  const res = await fetch('/api/posts');
-  const posts = await res.json();
+  try {
+    const res = await fetch('/api/posts');
 
-  if (!postContainer) return;
+    if (!res.ok) throw new Error('Failed to load posts');
 
-  postContainer.innerHTML = '';
+    const posts = await res.json();
 
-  posts.forEach(post => {
-    const matchesTag = !filterTag || post.title.includes(`#${filterTag}`) || post.content.includes(`#${filterTag}`);
-    const matchesSearch = !searchQuery || post.title.toLowerCase().includes(searchQuery) || post.content.toLowerCase().includes(searchQuery);
+    if (!postContainer) return;
 
-    if (!matchesTag || !matchesSearch) return;
+    postContainer.innerHTML = '';
 
-    const postEl = document.createElement('div');
-    postEl.className = 'blog-post';
+    posts.forEach(post => {
+      const matchesTag = !filterTag || post.title.includes(`#${filterTag}`) || post.content.includes(`#${filterTag}`);
+      const matchesSearch = !searchQuery || post.title.toLowerCase().includes(searchQuery) || post.content.toLowerCase().includes(searchQuery);
 
-    postEl.innerHTML = `
-      <h3 contenteditable="false">${renderHashtags(post.title)}</h3>
-      <p contenteditable="false">${renderHashtags(post.content)}</p>
-      ${post.image_filename ? `<img src="/uploads/${post.image_filename}" width="300">` : ''}
-      <small>Posted at: ${new Date(post.posted_at).toLocaleString()}</small>
-      <div class="admin-controls">
-        <button onclick="deletePost(${post.id})">🗑️ Delete</button>
-        <button onclick="editPost(this, ${post.id})">✏️ Edit</button>
-      </div>
-      <hr>
-    `;
+      if (!matchesTag || !matchesSearch) return;
 
-    postContainer.appendChild(postEl);
-  });
+      const postEl = document.createElement('div');
+      postEl.className = 'blog-post';
 
-  // Make hashtags clickable
-  document.querySelectorAll('.hashtag').forEach(tag => {
-    tag.addEventListener('click', () => {
-      const tagText = tag.getAttribute('data-tag');
-      const searchVal = document.getElementById('search-bar')?.value.trim().toLowerCase();
-      loadPosts(tagText, searchVal);
+      postEl.innerHTML = `
+        <h3 contenteditable="false">${renderHashtags(post.title)}</h3>
+        <p contenteditable="false">${renderHashtags(post.content)}</p>
+        ${post.image_filename ? `<img src="/uploads/${post.image_filename}" width="300">` : ''}
+        <small>Posted at: ${new Date(post.posted_at).toLocaleString()}</small>
+        <div class="admin-controls">
+          <button onclick="deletePost(${post.id})">🗑️ Delete</button>
+          <button onclick="editPost(this, ${post.id})">✏️ Edit</button>
+        </div>
+        <hr>
+      `;
+
+      postContainer.appendChild(postEl);
     });
-  });
+
+    // Make hashtags clickable
+    document.querySelectorAll('.hashtag').forEach(tag => {
+      tag.addEventListener('click', () => {
+        const tagText = tag.getAttribute('data-tag');
+        const searchVal = document.getElementById('search-bar')?.value.trim().toLowerCase();
+        loadPosts(tagText, searchVal);
+      });
+    });
+  } catch (err) {
+    console.error('Error loading posts:', err);
+    if (postContainer) {
+      postContainer.innerHTML = '<p style="color:red;">Failed to load posts.</p>';
+    }
+  }
 }
 
 // ===============================
