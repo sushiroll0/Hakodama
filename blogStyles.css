@@ -1,0 +1,19 @@
+.hashtag {
+    color: #007bff;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .hashtag:hover {
+    text-decoration: underline;
+  }
+  
+  #search-bar {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  
