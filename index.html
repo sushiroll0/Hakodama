@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <title>Hakodama</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="blogStyles.css">
+  <link rel="stylesheet" href="indexStyles.css">
   <style>
-    /* TEMPORARY: Inline to ensure splash works instantly */
     .main-content {
       display: none;
     }
@@ -13,14 +14,13 @@
 </head>
 <body>
 
-  <!-- Splash Logo (Centered and Fullscreen) -->
+  <!-- Splash Logo -->
   <div class="splash">
     <img src="hakodama.png" alt="Hakodama Logo" width="300">
   </div>
 
-  <!-- Site Content -->
+  <!-- Main Content -->
   <div class="wrapper main-content">
-    <!-- Navigation -->
     <nav>
       <ul class="nav-menu">
         <li><a href="index.html">Home</a></li>
@@ -29,22 +29,18 @@
       </ul>
     </nav>
 
-    <!-- Main Content -->
     <main>
       <!-- Your main content goes here -->
     </main>
 
-    <!-- Section -->
     <section>
-      <!-- Your section content goes here -->
+      <!-- Section content -->
     </section>
 
-    <!-- Sidebar -->
     <aside>
-      <!-- Optional sidebar content -->
+      <!-- Optional sidebar -->
     </aside>
 
-    <!-- Embedded YouTube Video -->
     <iframe width="560" height="315"
       src="https://www.youtube.com/embed/aGCdLKXNF3w"
       title="YouTube video player"
@@ -53,25 +49,14 @@
       allowfullscreen>
     </iframe>
 
-  
-    <!-- Footer -->
     <footer>
-      <!-- Footer content goes here -->
+      <!-- Footer -->
     </footer>
   </div>
 
-  <!-- All JS goes into script.js now -->
-  <script src="script.js"></script>
-
-  <link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="blogStyles.css">
-<script src="blogScript.js" defer></script>
-
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="indexStyles.css">
-<script src="blogScript.js" defer></script>
-<script src="indexScript.js" defer></script>
-
+  <!-- ✅ JS: Only these scripts -->
+  <script src="indexScript.js" defer></script>
+  <script src="blogScript.js" defer></script>
 
 </body>
 </html>
