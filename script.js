@@ -5,7 +5,7 @@ setTimeout(() => {
   }, 2000);
   
   // Backend GET test
-  fetch('http://mywebserver.local:3000/api/hello')
+  fetch('http://173.174.240.60:3000/api/blog')
     .then(res => res.json())
     .then(data => {
       document.body.innerHTML += `<p>${data.message}</p>`;
