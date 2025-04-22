@@ -10,10 +10,10 @@ if (splash && mainContent) {
 }
   
   // Test fetch (optional)
-  fetch('http://173.174.240.60:3000/api/hello')
+ fetch('/api/hello')
+  .then(res => res.json())
+  .then(data => {
+    document.body.innerHTML += `<p>${data.message}</p>`;
+  })
+  .catch(error => console.error('Fetch failed:', error));
 
-    .then(res => res.json())
-    .then(data => {
-      document.body.innerHTML += `<p>${data.message}</p>`;
-    });
-  
