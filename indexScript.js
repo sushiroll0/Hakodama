@@ -10,7 +10,8 @@ if (splash && mainContent) {
 }
   
   // Test fetch (optional)
-  fetch('http://mywebserver.local:3000/api/hello')
+  fetch('http://173.174.240.60:3000/api/hello')
+
     .then(res => res.json())
     .then(data => {
       document.body.innerHTML += `<p>${data.message}</p>`;
