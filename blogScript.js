@@ -78,10 +78,11 @@ async function fetchPosts() {
       ${mediaHtml}
       <small>${
         post.posted_at && !isNaN(Date.parse(post.posted_at))
-          ? new Date(post.posted_at).toLocaleString('en-US', {
-              dateStyle: 'short',
-              timeStyle: 'short'
-            })
+          ? new Date(post.posted_at).toLocaleString(undefined, {
+            dateStyle: 'short',
+            timeStyle: 'short'
+          })
+
           : "(no date)"
       }</small>
       <hr>
