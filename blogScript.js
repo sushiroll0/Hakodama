@@ -76,15 +76,15 @@ async function fetchPosts() {
       <h3>${post.title}</h3>
       <p>${post.content}</p>
       ${mediaHtml}
-      <small>${
-        post.posted_at && !isNaN(Date.parse(post.posted_at))
-          ? new Date(post.posted_at).toLocaleString(undefined, {
-            dateStyle: 'short',
-            timeStyle: 'short'
-          })
+     <small>${
+  post.posted_at && !isNaN(Date.parse(post.posted_at))
+    ? new Date(post.posted_at).toLocaleString(undefined, {
+        dateStyle: 'short',
+        timeStyle: 'short'
+      })
+    : "(no date)"
+}</small>
 
-          : "(no date)"
-      }</small>
       <hr>
     `;
 
