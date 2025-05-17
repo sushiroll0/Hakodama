@@ -1,4 +1,3 @@
-// 📌 Added to support edit mode
 let editingPostId = null;
 
 // When the page loads, fetch and display posts
@@ -6,6 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchPosts();
 
   const form = document.getElementById('blog-form');
+  const submitButton = document.getElementById('submit-button');
+  const cancelButton = document.getElementById('cancel-edit');
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -15,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
       let response;
 
       if (editingPostId) {
-        // ✏️ Update existing post
+        // ✏️ Edit existing post
         response = await fetch(`/posts/${editingPostId}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -48,7 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (result.success) {
         document.getElementById('confirmation').innerText = '✅ Post submitted!';
         form.reset();
-        fetchPosts(); // Reload posts
+        submitButton.innerText = 'Post';
+        cancelButton.style.display = 'none';
+        fetchPosts();
       } else {
         document.getElementById('confirmation').innerText = '❌ Something went wrong.';
       }
@@ -57,6 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error("🚨 Submit error:", err);
       document.getElementById('confirmation').innerText = '❌ Server error.';
     }
+  });
+
+  // 🔁 Cancel edit button
+  cancelButton.addEventListener('click', () => {
+    editingPostId = null;
+    form.reset();
+    submitButton.innerText = 'Post';
+    cancelButton.style.display = 'none';
+    document.getElementById('confirmation').innerText = '';
   });
 
   // Optional: Add search filter
@@ -116,8 +129,7 @@ async function fetchPosts() {
     container.appendChild(postEl);
   });
 
-  // ✅ Delete button logic
-  // 📅 Added: May 16, 2025 @ 10:02 PM
+  // 🗑️ Handle delete buttons
   document.querySelectorAll('.delete-post').forEach(button => {
     button.addEventListener('click', async () => {
       const id = button.getAttribute('data-id');
@@ -129,27 +141,27 @@ async function fetchPosts() {
 
       const result = await res.json();
       if (result.success) {
-        fetchPosts(); // Reload posts
+        fetchPosts();
       } else {
         alert('❌ Failed to delete post.');
       }
     });
   });
 
-  // ✅ Edit button logic
-  // 📅 Added: May 16, 2025 @ 10:22 PM
+  // ✏️ Handle edit buttons
   document.querySelectorAll('.edit-post').forEach(button => {
     button.addEventListener('click', () => {
       const id = button.getAttribute('data-id');
       const title = decodeURIComponent(button.getAttribute('data-title'));
       const content = decodeURIComponent(button.getAttribute('data-content'));
 
-      // Fill form
       document.querySelector('input[name="title"]').value = title;
       document.querySelector('textarea[name="content"]').value = content;
 
       editingPostId = id;
       document.getElementById('confirmation').innerText = '✏️ Editing post...';
+      document.getElementById('submit-button').innerText = 'Save Changes';
+      document.getElementById('cancel-edit').style.display = 'inline-block';
     });
   });
 }
