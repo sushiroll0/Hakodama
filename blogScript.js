@@ -1,3 +1,6 @@
+// 📌 Added to support edit mode
+let editingPostId = null;
+
 // When the page loads, fetch and display posts
 document.addEventListener('DOMContentLoaded', () => {
   fetchPosts();
@@ -9,10 +12,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const formData = new FormData(form);
 
     try {
-      const response = await fetch('/submit', {
-        method: 'POST',
-        body: formData,
-      });
+      let response;
+
+      if (editingPostId) {
+        // ✏️ Update existing post
+        response = await fetch(`/posts/${editingPostId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({
+            title: formData.get('title'),
+            content: formData.get('content')
+          })
+        });
+        editingPostId = null;
+      } else {
+        // 🆕 New post
+        response = await fetch('/submit', {
+          method: 'POST',
+          body: formData
+        });
+      }
 
       const text = await response.text();
       console.log("Server response:", text);
@@ -89,6 +108,7 @@ async function fetchPosts() {
           : "(no date)"
       }</small>
       <br>
+      <button class="edit-post" data-id="${post.id}" data-title="${encodeURIComponent(post.title)}" data-content="${encodeURIComponent(post.content)}">✏️ Edit</button>
       <button class="delete-post" data-id="${post.id}">🗑️ Delete</button>
       <hr>
     `;
@@ -96,7 +116,7 @@ async function fetchPosts() {
     container.appendChild(postEl);
   });
 
-  // ✅ Added delete-post button handling
+  // ✅ Delete button logic
   // 📅 Added: May 16, 2025 @ 10:02 PM
   document.querySelectorAll('.delete-post').forEach(button => {
     button.addEventListener('click', async () => {
@@ -113,6 +133,23 @@ async function fetchPosts() {
       } else {
         alert('❌ Failed to delete post.');
       }
+    });
+  });
+
+  // ✅ Edit button logic
+  // 📅 Added: May 16, 2025 @ 10:22 PM
+  document.querySelectorAll('.edit-post').forEach(button => {
+    button.addEventListener('click', () => {
+      const id = button.getAttribute('data-id');
+      const title = decodeURIComponent(button.getAttribute('data-title'));
+      const content = decodeURIComponent(button.getAttribute('data-content'));
+
+      // Fill form
+      document.querySelector('input[name="title"]').value = title;
+      document.querySelector('textarea[name="content"]').value = content;
+
+      editingPostId = id;
+      document.getElementById('confirmation').innerText = '✏️ Editing post...';
     });
   });
 }
