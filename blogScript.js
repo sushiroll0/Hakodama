@@ -72,21 +72,25 @@ async function fetchPosts() {
       }
     }
 
-    postEl.innerHTML = `
-      <h3>${post.title}</h3>
-      <p>${post.content}</p>
-      ${mediaHtml}
-     <small>${
-  post.posted_at && !isNaN(Date.parse(post.posted_at))
-    ? new Date(post.posted_at).toLocaleString(undefined, {
-        dateStyle: 'short',
-        timeStyle: 'short'
-      })
-    : "(no date)"
-}</small>
+   postEl.innerHTML = `
+  <h3>${post.title}</h3>
+  <p>${post.content}</p>
+  ${mediaHtml}
+  <small>${
+    post.posted_at && !isNaN(Date.parse(post.posted_at))
+      ? (() => {
+          const date = new Date(post.posted_at);
+          const local = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+          return local.toLocaleString(undefined, {
+            dateStyle: 'short',
+            timeStyle: 'short'
+          });
+        })()
+      : "(no date)"
+  }</small>
+  <hr>
+`;
 
-      <hr>
-    `;
 
     container.appendChild(postEl);
   });
