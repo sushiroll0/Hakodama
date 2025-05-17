@@ -1,158 +1,69 @@
-// ===============================
-// 📝 SUBMIT NEW BLOG POST
-// ===============================
-const blogForm = document.getElementById('blog-form');
-const confirmation = document.getElementById('confirmation');
-const postContainer = document.getElementById('blog-posts');
+// When the page loads, fetch and display posts
+document.addEventListener('DOMContentLoaded', () => {
+  fetchPosts();
 
-if (blogForm) {
-  blogForm.addEventListener('submit', async function (e) {
+  const form = document.getElementById('blog-form');
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const formData = new FormData(blogForm);
 
-    const res = await fetch('/api/blog', {
+    const formData = new FormData(form);
+
+    const response = await fetch('/submit', {
       method: 'POST',
-      body: formData
+      body: formData,
     });
 
-    const result = await res.json();
+    const result = await response.json();
 
     if (result.success) {
-      confirmation.textContent = 'Post submitted!';
-      confirmation.style.color = 'green';
-      blogForm.reset();
-      loadPosts(); // reload posts after new one added
+      document.getElementById('confirmation').innerText = '✅ Post submitted!';
+      form.reset();
+      fetchPosts(); // Reload posts
     } else {
-      confirmation.textContent = 'Failed to post.';
-      confirmation.style.color = 'red';
-    }
-  });
-}
-
-// ===============================
-// 🧰 ADMIN TOOLS
-// ===============================
-const ADMIN_PASS = "yourSuperSecretPassword"; // CHANGE THIS to match server.js
-
-async function deletePost(id) {
-  const confirmed = confirm("Are you sure you want to delete this post?");
-  if (!confirmed) return;
-
-  const res = await fetch(`/api/posts/${id}`, {
-    method: 'DELETE',
-    headers: {
-      'x-admin-pass': ADMIN_PASS
+      document.getElementById('confirmation').innerText = '❌ Something went wrong.';
     }
   });
 
-  const result = await res.json();
-  if (result.success) {
-    alert('Post deleted.');
-    loadPosts();
-  } else {
-    alert('Failed to delete post.');
-  }
-}
-
-async function editPost(button, id) {
-  const postDiv = button.closest('.blog-post');
-  const titleEl = postDiv.querySelector('h3');
-  const contentEl = postDiv.querySelector('p');
-
-  if (button.textContent === "✏️ Edit") {
-    titleEl.contentEditable = true;
-    contentEl.contentEditable = true;
-    button.textContent = "💾 Save";
-  } else {
-    titleEl.contentEditable = false;
-    contentEl.contentEditable = false;
-    button.textContent = "✏️ Edit";
-
-    const updatedPost = {
-      title: titleEl.textContent.trim(),
-      content: contentEl.textContent.trim()
-    };
-
-    const res = await fetch(`/api/posts/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-admin-pass': ADMIN_PASS
-      },
-      body: JSON.stringify(updatedPost)
+  // Optional: Add search filter
+  const searchInput = document.getElementById('search-bar');
+  searchInput.addEventListener('input', () => {
+    const search = searchInput.value.toLowerCase();
+    const posts = document.querySelectorAll('.blog-post');
+    posts.forEach(post => {
+      post.style.display = post.innerText.toLowerCase().includes(search) ? 'block' : 'none';
     });
+  });
+});
 
-    const result = await res.json();
-    if (result.success) {
-      alert('Post updated.');
-      loadPosts();
-    } else {
-      alert('Failed to update post.');
-    }
-  }
-}
-
-// ===============================
-// 📬 DISPLAY BLOG POSTS
-// ===============================
-function renderHashtags(text) {
-  return text.replace(/#(\w+)/g, `<span class="hashtag" data-tag="$1">#$1</span>`);
-}
-
-async function loadPosts(filterTag = null, searchQuery = "") {
-  const res = await fetch('/api/posts');
+// Fetch and display posts
+async function fetchPosts() {
+  const res = await fetch('/posts');
   const posts = await res.json();
 
-  if (!postContainer) return;
-
-  postContainer.innerHTML = '';
+  const container = document.getElementById('blog-posts');
+  container.innerHTML = '';
 
   posts.forEach(post => {
-    const matchesTag = !filterTag || post.title.includes(`#${filterTag}`) || post.content.includes(`#${filterTag}`);
-    const matchesSearch = !searchQuery || post.title.toLowerCase().includes(searchQuery) || post.content.toLowerCase().includes(searchQuery);
-
-    if (!matchesTag || !matchesSearch) return;
-
     const postEl = document.createElement('div');
-    postEl.className = 'blog-post';
+    postEl.classList.add('blog-post');
+
+    let mediaHtml = '';
+    if (post.media) {
+      if (post.media.endsWith('.mp4') || post.media.endsWith('.webm')) {
+        mediaHtml = `<video controls width="300" src="${post.media}"></video>`;
+      } else {
+        mediaHtml = `<img src="${post.media}" width="300" />`;
+      }
+    }
 
     postEl.innerHTML = `
-      <h3 contenteditable="false">${renderHashtags(post.title)}</h3>
-      <p contenteditable="false">${renderHashtags(post.content)}</p>
-      ${post.image_filename ? `<img src="/uploads/${post.image_filename}" width="300">` : ''}
-      <small>Posted at: ${new Date(post.posted_at).toLocaleString()}</small>
-      <div class="admin-controls">
-        <button onclick="deletePost(${post.id})">🗑️ Delete</button>
-        <button onclick="editPost(this, ${post.id})">✏️ Edit</button>
-      </div>
+      <h3>${post.title}</h3>
+      <p>${post.content}</p>
+      ${mediaHtml}
+      <small>${new Date(post.timestamp).toLocaleString()}</small>
       <hr>
     `;
 
-    postContainer.appendChild(postEl);
-  });
-
-  // Make hashtags clickable
-  document.querySelectorAll('.hashtag').forEach(tag => {
-    tag.addEventListener('click', () => {
-      const tagText = tag.getAttribute('data-tag');
-      const searchVal = document.getElementById('search-bar')?.value.trim().toLowerCase();
-      loadPosts(tagText, searchVal);
-    });
+    container.appendChild(postEl);
   });
 }
-
-// ===============================
-// 🔍 SEARCH BAR LISTENER
-// ===============================
-const searchInput = document.getElementById('search-bar');
-if (searchInput) {
-  searchInput.addEventListener('input', () => {
-    const searchValue = searchInput.value.trim().toLowerCase();
-    loadPosts(null, searchValue);
-  });
-}
-
-// Load posts when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-  loadPosts();
-});
