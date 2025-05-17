@@ -72,26 +72,47 @@ async function fetchPosts() {
       }
     }
 
-   postEl.innerHTML = `
-  <h3>${post.title}</h3>
-  <p>${post.content}</p>
-  ${mediaHtml}
-  <small>${
-    post.posted_at && !isNaN(Date.parse(post.posted_at))
-      ? (() => {
-          const date = new Date(post.posted_at);
-          const local = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
-          return local.toLocaleString(undefined, {
-            dateStyle: 'short',
-            timeStyle: 'short'
-          });
-        })()
-      : "(no date)"
-  }</small>
-  <hr>
-`;
-
+    postEl.innerHTML = `
+      <h3>${post.title}</h3>
+      <p>${post.content}</p>
+      ${mediaHtml}
+      <small>${
+        post.posted_at && !isNaN(Date.parse(post.posted_at))
+          ? (() => {
+              const date = new Date(post.posted_at);
+              const local = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+              return local.toLocaleString(undefined, {
+                dateStyle: 'short',
+                timeStyle: 'short'
+              });
+            })()
+          : "(no date)"
+      }</small>
+      <br>
+      <button class="delete-post" data-id="${post.id}">🗑️ Delete</button>
+      <hr>
+    `;
 
     container.appendChild(postEl);
+  });
+
+  // ✅ Added delete-post button handling
+  // 📅 Added: May 16, 2025 @ 10:02 PM
+  document.querySelectorAll('.delete-post').forEach(button => {
+    button.addEventListener('click', async () => {
+      const id = button.getAttribute('data-id');
+      if (!confirm('Delete this post?')) return;
+
+      const res = await fetch(`/posts/${id}`, {
+        method: 'DELETE'
+      });
+
+      const result = await res.json();
+      if (result.success) {
+        fetchPosts(); // Reload posts
+      } else {
+        alert('❌ Failed to delete post.');
+      }
+    });
   });
 }
