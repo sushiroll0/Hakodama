@@ -26,3 +26,6 @@
     font-size: 16px;
   }
   
+  .nav-menu li a:hover {
+  color: #ffd700;
+}
