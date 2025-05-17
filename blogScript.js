@@ -13,7 +13,22 @@ document.addEventListener('DOMContentLoaded', () => {
       body: formData,
     });
 
-    const result = await response.json();
+    const text = await response.text();
+console.error("Server response:", text);
+try {
+  const result = JSON.parse(text);
+  if (result.success) {
+    document.getElementById('confirmation').innerText = '✅ Post submitted!';
+    form.reset();
+    fetchPosts();
+  } else {
+    document.getElementById('confirmation').innerText = '❌ Something went wrong.';
+  }
+} catch (err) {
+  console.error("JSON parse error:", err);
+  document.getElementById('confirmation').innerText = '❌ Server error.';
+}
+
 
     if (result.success) {
       document.getElementById('confirmation').innerText = '✅ Post submitted!';
