@@ -8,34 +8,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formData = new FormData(form);
 
-    const response = await fetch('/submit', {
-      method: 'POST',
-      body: formData,
-    });
+    try {
+      const response = await fetch('/submit', {
+        method: 'POST',
+        body: formData,
+      });
 
-    const text = await response.text();
-console.error("Server response:", text);
-try {
-  const result = JSON.parse(text);
-  if (result.success) {
-    document.getElementById('confirmation').innerText = '✅ Post submitted!';
-    form.reset();
-    fetchPosts();
-  } else {
-    document.getElementById('confirmation').innerText = '❌ Something went wrong.';
-  }
-} catch (err) {
-  console.error("JSON parse error:", err);
-  document.getElementById('confirmation').innerText = '❌ Server error.';
-}
+      const text = await response.text();
+      console.log("Server response:", text);
 
+      let result;
+      try {
+        result = JSON.parse(text);
+      } catch (err) {
+        console.error("❌ JSON parse error:", err);
+        document.getElementById('confirmation').innerText = '❌ Server error.';
+        return;
+      }
 
-    if (result.success) {
-      document.getElementById('confirmation').innerText = '✅ Post submitted!';
-      form.reset();
-      fetchPosts(); // Reload posts
-    } else {
-      document.getElementById('confirmation').innerText = '❌ Something went wrong.';
+      if (result.success) {
+        document.getElementById('confirmation').innerText = '✅ Post submitted!';
+        form.reset();
+        fetchPosts(); // Reload posts
+      } else {
+        document.getElementById('confirmation').innerText = '❌ Something went wrong.';
+      }
+
+    } catch (err) {
+      console.error("🚨 Submit error:", err);
+      document.getElementById('confirmation').innerText = '❌ Server error.';
     }
   });
 
@@ -76,15 +77,14 @@ async function fetchPosts() {
       <p>${post.content}</p>
       ${mediaHtml}
       <small>${
-   post.posted_at && !isNaN(Date.parse(post.posted_at))
-    ? new Date(post.posted_at).toLocaleString('en-US', {
-      timeZone: 'America/Chicago',
-      dateStyle: 'short',
-      timeStyle: 'short'
-    })
-  : "(no date)"
- </small>
-
+        post.posted_at && !isNaN(Date.parse(post.posted_at))
+          ? new Date(post.posted_at).toLocaleString('en-US', {
+              timeZone: 'America/Chicago',
+              dateStyle: 'short',
+              timeStyle: 'short'
+            })
+          : "(no date)"
+      }</small>
       <hr>
     `;
 
