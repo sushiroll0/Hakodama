@@ -20,14 +20,18 @@
 
   <!-- Site Content -->
   <div class="wrapper main-content">
-    <!-- Navigation -->
-    <nav>
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
+   <!-- Hamburger Button -->
+<div id="hamburger">&#9776;</div>
+
+<!-- Sidebar Navigation -->
+<nav id="sidebar" class="sidebar-nav hidden">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
 
     <!-- Main Content -->
     <main>
@@ -98,7 +102,18 @@
 <link rel="stylesheet" href="indexStyles.css">
 <script src="indexScript.js" defer></script>
 
+<!--Hamburger menu script-->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.getElementById("hamburger");
+    const sidebar = document.getElementById("sidebar");
 
+    hamburger.addEventListener("click", () => {
+      sidebar.classList.toggle("hidden");
+    });
+  });
+</script>
+<!-- End of Hamburger script-->
 
 </body>
 </html>
