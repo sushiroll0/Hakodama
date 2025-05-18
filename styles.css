@@ -1,5 +1,7 @@
+/* ============================= */
+/* Index HTML starts here       */
+/* ============================= */
 
-/* Index HTML starts here */
 body, html {
   margin: 0;
   padding: 0;
@@ -18,20 +20,18 @@ body, html {
   margin-top: 20px;
 }
 
-
 .sidebar {
   flex: 1;
   background-color: #f9f9f9;
   padding: 20px;
   border-left: 2px solid #ccc;
 }
+
 .sidebar h2 {
   text-align: center;
 }
 
-
 .youtube-video {
-
   width: 100%;
   max-width: 100%;
   aspect-ratio: 16 / 9;
@@ -45,6 +45,11 @@ body, html {
   justify-content: flex-end; /* aligns video to the right of this area */
 }
 
+/* ============================================ */
+/* OLD NAV MENU STYLES – NOW REPLACED BY SIDEBAR */
+/* ============================================ */
+
+/*
 .nav-menu {
   list-style: none;
   display: flex;
@@ -65,16 +70,70 @@ body, html {
 .nav-menu li a:hover {
   color: #ffd700;
 }
+*/
 
-/* INDEX HTML ends here */
+/* ============================= */
+/* Sidebar Hamburger Menu Styles */
+/* ============================= */
+
+/* Hamburger Button */
+#hamburger {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+/* Sidebar Navigation */
+.sidebar-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background-color: #111;
+  padding-top: 60px;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  padding: 15px;
+  text-align: left;
+}
+
+.sidebar-nav li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.sidebar-nav li a:hover {
+  color: #ffd700;
+  background-color: transparent;
+}
+
+/* Hide Sidebar by default */
+.hidden {
+  transform: translateX(-220px);
+}
 
 
+/* ============================= */
+/* Blog HTML starts here         */
+/* ============================= */
 
-
-
-
-/* Blog HTML starts here */
-
+/*
 .nav-menu {
   list-style: none;
   display: flex;
@@ -83,29 +142,32 @@ body, html {
   padding: 0;
   margin: 20px 0;
 }
+*/
 
 .hashtag {
-    color: #007bff;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .hashtag:hover {
-    text-decoration: underline;
-  }
-  
-  #search-bar {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0 20px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-  }
-  
-  .nav-menu li a:hover {
+  color: #007bff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.hashtag:hover {
+  text-decoration: underline;
+}
+
+#search-bar {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+/* This hover was originally for nav-menu; left in case needed elsewhere */
+.nav-menu li a:hover {
   color: #ffd700;
 }
 
-/* Blog HTML ends here */
-
+/* ============================= */
+/* Blog HTML ends here           */
+/* ============================= */
