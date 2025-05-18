@@ -8,13 +8,43 @@
   <link rel="stylesheet" href="blogStyles.css">
 </head>
 <body>
-    <nav>
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
+  <!-- Hamburger Button -->
+<div id="hamburger">&#9776;</div>
+
+<!-- Sidebar Navigation -->
+<nav id="sidebar" class="sidebar-nav hidden">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- All JS goes into script.js now -->
+  <script src="script.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="blogStyles.css">
+<script src="blogScript.js" defer></script>
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="indexStyles.css">
+<script src="indexScript.js" defer></script>
+
+<!--Hamburger menu script-->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.getElementById("hamburger");
+    const sidebar = document.getElementById("sidebar");
+
+    hamburger.addEventListener("click", () => {
+      sidebar.classList.toggle("hidden");
+    });
+  });
+</script>
+<!-- End of Hamburger script-->
+
+
 </body>
  <h2>Search posts</h2>
 <input type="text" id="search-bar" placeholder="Search posts..." />
