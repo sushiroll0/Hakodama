@@ -42,6 +42,20 @@ if (blogForm) {
     }
   });
 }
+// ===============================
+// 👻 REVEAL MAIN CONTENT AFTER SPLASH
+// ===============================
+document.addEventListener("DOMContentLoaded", function () {
+  const splash = document.querySelector('.splash');
+  const mainContent = document.querySelector('.main-content');
+
+  // Reveal main content after splash fade (matches 5s animation)
+  setTimeout(() => {
+    if (mainContent) {
+      mainContent.style.display = 'block';
+    }
+  }, 5000); // adjust if your splash duration is different
+});
 
 // ===============================
 // 🧰 ADMIN TOOLS
