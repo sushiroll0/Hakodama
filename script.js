@@ -1,25 +1,3 @@
-// ===============================
-// 🌊 SPLASH FADE LOGIC
-// ===============================
-const splash = document.querySelector('.splash');
-const mainContent = document.querySelector('.main-content');
-
-if (splash && mainContent) {
-  setTimeout(() => {
-    splash.style.display = 'none';
-    mainContent.style.display = 'block';
-  }, 2000);
-}
-
-// ===============================
-// 🧪 BACKEND CONNECTION TEST
-// ===============================
-fetch('/api/hello')
-  .then(res => res.json())
-  .then(data => {
-    document.body.innerHTML += `<p>${data.message}</p>`;
-  })
-  .catch(err => console.error('Backend /api/hello fetch failed:', err));
 
 // ===============================
 // 📝 SUBMIT NEW BLOG POST
