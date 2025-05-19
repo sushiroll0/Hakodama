@@ -105,11 +105,11 @@ body, html {
 .write-a-blog-post {
   font-size: 32px;
   color: black;
-  width: 50%
+  width: 50%;
   padding: 10px;
-    margin: 10px 0 20px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+  margin: 10px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
 
