@@ -40,13 +40,10 @@
     <form id="blog-form" class="blog-form" enctype="multipart/form-data">
         <input type="text" name="title" placeholder="Blog title" required>
         <textarea name="content" placeholder="Write your blog post..." required></textarea>
-        <div class="form-row-right">
+       <div class="file-post-wrapper">
            <input type="file" name="media" accept="image/*,video/*">
-        </div>
-
-       <div class="form-row-right">
-        <button type="submit" id="submit-button">Post</button>
-        <button type="button" id="cancel-edit" style="display: none;">Cancel</button>
+           <button type="submit" id="submit-button">Post</button>
+           <button type="button" id="cancel-edit" style="display: none;">Cancel</button>
         </div>   
     </form>
       
