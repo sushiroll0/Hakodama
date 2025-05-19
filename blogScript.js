@@ -130,6 +130,24 @@ async function fetchPosts() {
     `;
 
     container.appendChild(postEl);
+// 📋 Enable copy button after rendering posts
+document.querySelectorAll('.copy-code-button').forEach(button => {
+  button.addEventListener('click', () => {
+    const code = button.nextElementSibling.textContent;
+
+    navigator.clipboard.writeText(code).then(() => {
+      button.textContent = '✅ Copied!';
+      setTimeout(() => {
+        button.textContent = '📋 Copy';
+      }, 1500);
+    }).catch(err => {
+      console.error('Copy failed:', err);
+      button.textContent = '❌ Error';
+    });
+  });
+});
+
+    
   });
 
   // 🗑️ Handle delete buttons
