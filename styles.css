@@ -148,11 +148,10 @@ body, html {
 
 .file-post-wrapper input[type="file"] {
   font-size: 14px;
-  padding-: 2px 4px;
+  padding-: 6px 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  width: 10% /* shrinks over all witdth */
-  max-width: 200px;
+  width: 130px /* shrinks over all witdth */
   align-self: flex-end;
 }
 
