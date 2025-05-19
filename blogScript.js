@@ -108,7 +108,7 @@ async function fetchPosts() {
       <h3>${post.title}</h3>
       <div class="code-wrapper">
       <button class="copy-code-button">📋 Copy</button>
-      <pre class="blog-post-content">pre> 
+      <pre class="blog-post-content">${post.content}</pre> 
       </div>
       ${mediaHtml}
       <small>${
