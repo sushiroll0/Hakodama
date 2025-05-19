@@ -109,6 +109,13 @@ body, html {
   margin: 20px auto;      /* THIS centers the block itself horizontally */
 }
 
+.Recent-Posts {
+  font-size: 20px;
+  text-align: center;     /* center the text inside the h1 */
+  width: fit-content;     /* or a specific width like 50% */
+  margin: 20px auto;      /* THIS centers the block itself horizontally */
+}
+  
 
   .nav-menu li a:hover {
   color: #ffd700;
