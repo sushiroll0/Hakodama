@@ -103,12 +103,12 @@ async function fetchPosts() {
         mediaHtml = `<img src="${post.media}" width="300" />`;
       }
     }
-// line 109 allows copy code, and 110 formats text content to be just as it was posted by user.
+// line 109 allows copy code, and 110 formats text content to be just as it was posted by user. Line 111 needs this: ${post.content}
     postEl.innerHTML = `
       <h3>${post.title}</h3>
       <div class="code-wrapper">
       <button class="copy-code-button">📋 Copy</button>
-      <pre class="blog-post-content">${post.content}</pre> 
+      <pre class="blog-post-content">pre> 
       </div>
       ${mediaHtml}
       <small>${
