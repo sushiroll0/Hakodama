@@ -76,62 +76,78 @@ body, html {
 /* Sidebar Hamburger Menu Styles */
 /* ============================= */
 
-/* Hamburger Button */
-#hamburger {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  font-size: 40px;   /* increase size */
+<!-- ✅ Add to your styles.css -->
+.hamburger {
+  font-size: 30px;
   cursor: pointer;
-  z-index: 1100;
-  background: none;
-  border: none;
-  color: black;       /* you can change to white if using dark background */
-}
-
-
-/* Sidebar Navigation */
-.sidebar-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200px;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 50% transparent black */
-}
-
-  padding-top: 60px;
-  z-index: 1000;
-  transition: transform 0.3s ease;
-}
-
-.sidebar-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar-nav li {
   padding: 15px;
-  text-align: left;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1101;
+  display: none;
 }
 
-.sidebar-nav li a {
-  color: white;
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.nav-menu li a {
   text-decoration: none;
+  color: black;
+  font-weight: bold;
   font-size: 18px;
-  display: block;
   transition: color 0.3s ease;
 }
 
-.sidebar-nav li a:hover {
+.nav-menu li a:hover {
   color: #ffd700;
-  background-color: transparent;
 }
 
-/* Hide Sidebar by default */
-.hidden {
-  transform: translateX(-220px);
+/* ✅ Slide-out style */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1100;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 200px;
+    height: 100%;
+    background: white;
+    padding: 60px 20px;
+    z-index: 1102;
+    transition: left 0.3s ease;
+  }
+
+  .nav-menu.show {
+    left: 0;
+  }
+
+  .overlay.show {
+    display: block;
+  }
 }
 
 
