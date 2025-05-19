@@ -104,8 +104,11 @@ body, html {
 
 .write-a-blog-post {
   font-size: 32px;
-  text-align: center; /* if you want to center the text inside too */
+  text-align: center;     /* center the text inside the h1 */
+  width: fit-content;     /* or a specific width like 50% */
+  margin: 20px auto;      /* THIS centers the block itself horizontally */
 }
+
 
   .nav-menu li a:hover {
   color: #ffd700;
