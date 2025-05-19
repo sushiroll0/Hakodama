@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>Hakodama</title>
+  <!--All CSS goes here-->
   <link rel="stylesheet" href="styles.css">
- 
+  <link rel="stylesheet" href="animation.css">
 
   <style>
     /* TEMPORARY: Inline to ensure splash works instantly */
@@ -21,17 +22,24 @@
   </div>
 <link rel="icon" href="hakodama.png" type="image/png">
 
+<!-- Hamburger Button -->
+<div id="hamburger">&#9776;</div>
+
+<!-- Sidebar Navigation -->
+<nav id="sidebar" class="sidebar-nav hidden">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+</nav>
+
+
+
+
   <!-- Site Content -->
   <div class="wrapper main-content">
-    <!-- Navigation -->
-    <nav>
-      <ul class="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-
+    
     <!-- Main Content -->
     <main>
       <!-- Your main content goes here -->
@@ -92,10 +100,17 @@
 
   <!-- All JS goes into script.js now -->
   <script src="script.js"></script>
-
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="animation.css">
 <script src="animation.js" defer></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.getElementById("hamburger");
+    const sidebar = document.getElementById("sidebar");
+
+    hamburger.addEventListener("click", () => {
+      sidebar.classList.toggle("hidden");
+    });
+  });
+</script>
 
 
 
