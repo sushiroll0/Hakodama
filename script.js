@@ -203,3 +203,30 @@ if (searchInput) {
     loadPosts(null, searchValue);
   });
 }
+
+// ===============================
+// burger menu
+// ===============================
+
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  const overlay = document.getElementById('overlay');
+
+  if (hamburger && mobileNav && overlay) {
+    hamburger.addEventListener('click', () => {
+      mobileNav.classList.toggle('active');
+      overlay.classList.toggle('active');
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', !expanded);
+      document.body.style.overflow = expanded ? '' : 'hidden';
+    });
+
+    overlay.addEventListener('click', () => {
+      mobileNav.classList.remove('active');
+      overlay.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  }
+});
