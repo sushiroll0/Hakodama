@@ -138,17 +138,22 @@ body, html {
   resize: vertical;
 }
 
-/* File input flush right */
-.form-row-right {
+.file-post-wrapper {
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: 10px;
-  margin-right:20px;
+  flex-direction: column;
+  align-items: flex-end; /* right-aligns both file input and button */
+  margin-top: 10px;
+  gap: 8px; /* space between file input and Post button */
 }
 
-/* Buttons spacing */
-.blog-form button {
-  margin-left: 10px;
+.file-post-wrapper input[type="file"] {
+  font-size: 14px;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+#submit-button {
   padding: 8px 16px;
   border: none;
   border-radius: 6px;
@@ -158,9 +163,10 @@ body, html {
   transition: background-color 0.2s ease;
 }
 
-.blog-form button:hover {
+#submit-button:hover {
   background-color: #40bfbf;
 }
+
 
 
 
