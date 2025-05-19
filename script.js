@@ -207,14 +207,21 @@ if (searchInput) {
 
 
 
-// Hamburger Menu Toggle
+/* ✅ script.js: Add this at the bottom */
 document.addEventListener("DOMContentLoaded", function () {
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("nav-menu");
+  const overlay = document.getElementById("overlay");
 
-  if (hamburger && navMenu) {
+  if (hamburger && navMenu && overlay) {
     hamburger.addEventListener("click", () => {
       navMenu.classList.toggle("show");
+      overlay.classList.toggle("show");
+    });
+
+    overlay.addEventListener("click", () => {
+      navMenu.classList.remove("show");
+      overlay.classList.remove("show");
     });
   }
 });
