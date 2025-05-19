@@ -106,7 +106,7 @@ async function fetchPosts() {
 
     postEl.innerHTML = `
       <h3>${post.title}</h3>
-      <p>${post.content}</p>
+      <pre class="blog-post-content">${post.content}</pre>
       ${mediaHtml}
       <small>${
         post.posted_at && !isNaN(Date.parse(post.posted_at))
