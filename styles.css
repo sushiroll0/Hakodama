@@ -142,7 +142,8 @@ body, html {
 .form-row-right {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+  padding-right:20px;
 }
 
 /* Buttons spacing */
