@@ -196,6 +196,12 @@ body, html {
   }
 }
 
+/* Post content */
+.blog-post-content {
+  white-space: pre-wrap;
+  font-family: monospace; /* optional */
+  line-height: 1.5;
+}
 
 
 
