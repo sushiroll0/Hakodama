@@ -103,10 +103,13 @@ async function fetchPosts() {
         mediaHtml = `<img src="${post.media}" width="300" />`;
       }
     }
-
+// line 109 allows copy code, and 110 formats text content to be just as it was posted by user.
     postEl.innerHTML = `
       <h3>${post.title}</h3>
-      <pre class="blog-post-content">${post.content}</pre>
+      <div class="code-wrapper">
+      <button class="copy-code-button">📋 Copy</button>
+      <pre class="blog-post-content">${post.content}</pre> 
+      </div>
       ${mediaHtml}
       <small>${
         post.posted_at && !isNaN(Date.parse(post.posted_at))
