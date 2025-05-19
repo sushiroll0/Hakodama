@@ -148,11 +148,12 @@ body, html {
 
 .file-post-wrapper input[type="file"] {
   font-size: 14px;
-  padding-: 6px 10px;
+  padding: 6px 10px;    /* Internal spacing */
   border: 1px solid #ccc;
   border-radius: 6px;
-  width: 130px /* shrinks over all witdth */
-  align-self: flex-end;
+  width: 60%;           /* Shrinks the file input (adjust as needed) */
+  max-width: 300px;     /* Optional: limit max width */
+  align-self: flex-end; /* Keeps it aligned right */
 }
 
 #submit-button {
@@ -164,6 +165,20 @@ body, html {
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
+
+.file-button {
+  width: 100px;                      /* Shrinks width of button */
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  color: black;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 
 #submit-button:hover {
   background-color: #40bfbf;
