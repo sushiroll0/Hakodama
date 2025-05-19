@@ -205,6 +205,44 @@ body, html {
 
 
 
+/*copy posts or code */
+
+.code-wrapper {
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.copy-code-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 4px 8px;
+  cursor: pointer;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.copy-code-button:hover {
+  opacity: 1;
+}
+
+.blog-post-content {
+  white-space: pre-wrap;
+  font-family: monospace;
+  line-height: 1.5;
+  padding: 12px;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+
+/* add section here */
 
   .nav-menu li a:hover {
   color: #ffd700;
