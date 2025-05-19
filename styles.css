@@ -115,7 +115,56 @@ body, html {
   width: fit-content;     /* or a specific width like 50% */
   margin: 20px auto;      /* THIS centers the block itself horizontally */
 }
-  
+
+.blog-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.blog-form input[type="text"],
+.blog-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.blog-form textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+/* File input flush right */
+.form-row-right {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+/* Buttons spacing */
+.blog-form button {
+  margin-left: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: turquoise;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.blog-form button:hover {
+  background-color: #40bfbf;
+}
+
+
+
+
+
 
   .nav-menu li a:hover {
   color: #ffd700;
