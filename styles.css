@@ -316,7 +316,7 @@ body {
   left: 0;
   width: 200px;
   height: 100%;
-  background-color: rgba(64, 244, 208, 0.4); /* 50% transparent black */
+  background-color: rgba(0, 0, 0, 0.4); /* 50% transparent black */
   padding-top: 60px;
   z-index: 1000;
   transition: transform 0.3s ease;
