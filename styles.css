@@ -10,11 +10,41 @@ body, html {
   justify-content: flex-start;
 }
 
-.content-area {
+body {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #222;
+}
+
+.dialog-box {
   display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  margin-top: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+ /* Full viewport height */
+  ; /* Semi-transparent background */
+}
+
+.page-wrapper {
+  padding: 2em 4em 2em 4em;
+  max-width: 1200px;
+  margin: 0 auto; /* center it on large screens */
+}
+/* For QHD and ultra-wide displays */
+@media (min-width: 2000px) {
+  .page-wrapper {
+    padding: 2em 8em;
+  }
+}
+
+.content-area {
+    display: flex;
+  justify-content: space-between; /* or flex-end, center, etc. */
+  align-items: center;
+  padding: 4em 7em 2em 0em;
+  gap: 2em; /* spacing between video and text */
 }
 
 
@@ -32,17 +62,35 @@ body, html {
 .youtube-video {
 
   width: 100%;
-  max-width: 100%;
+  max-width: 600px;
   aspect-ratio: 16 / 9;
   border: none;
 }
 
-.video-container {
+.video-container iframe {
   flex: 2;
   display: flex;
-  align-items: center;
-  justify-content: flex-end; /* aligns video to the right of this area */
+  align-items: ;
+  justify-content: flex-end; /* aligns video to the right */
+  padding: 4em 7em 2em 0em; /* top, right, bottom, left */
 }
+
+
+.footer-wrapper {
+  display: flex;
+  justify-content: space-between; /* or flex-end, center, etc. */
+  align-items: center;
+  padding: 4em 7em 2em 0em;
+  gap: 2em; /* spacing between video and text */
+}
+
+.video-container2 iframe {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 8px;
+}
+
 
 .nav-menu {
   list-style: none;
