@@ -3,15 +3,19 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: FloralLight;
-   font-family: "Times New Roman", Times, serif;
-   font-size: 18px;
+  background-color: White;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
 }
 
+body {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #222;
+}
 
 .dialog-box {
   display: flex;
@@ -87,6 +91,7 @@ body, html {
   border-radius: 8px;
 }
 
+
 .nav-menu {
   list-style: none;
   display: flex;
@@ -108,8 +113,6 @@ body, html {
   color: #ffd700;
 }
 
-
-
 /* INDEX HTML ends here */
 
 
@@ -126,7 +129,7 @@ body, html {
   justify-content: center;
   padding: 0;
   margin: 20px 0;
-} */     
+} */
 
 .hashtag {
     color: #007bff;
@@ -296,12 +299,20 @@ body, html {
 /* Blog HTML ends here */
 
 /* Hamburger Button */
+
+#layout {
+  display: flex;
+  flex-direction: row;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
 #hamburger {
   position: fixed;
   top: 20px;
   left: 20px;
   color: black;
-  font-size: 100px;
+  font-size: 50px;
   cursor: pointer;
   z-index: 1100;
 }
@@ -317,6 +328,7 @@ body, html {
   padding-top: 60px;
   z-index: 1000;
   transition: transform 0.3s ease;
+  overflow-x: hidden;
 }
 
 .sidebar-nav ul {
@@ -343,4 +355,10 @@ body, html {
 /* Hide Sidebar by default */
 .hidden {
   transform: translateX(-220px);
+}
+
+/* Push content when sidebar is visible */
+#layout.sidebar-open .sidebar-nav {
+  width: 200px;
+  padding: 60px 20px;
 }
