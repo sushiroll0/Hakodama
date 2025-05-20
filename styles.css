@@ -51,7 +51,8 @@ body {
 .sidebar {
   flex: 1;
   background-color: #f9f9f9;
-  padding: 20px;
+  padding: 100px;
+  border-radius: 30px;
   border-left: 2px solid #ccc;
 }
 .sidebar h2 {
@@ -72,7 +73,7 @@ body {
   display: flex;
   align-items: ;
   justify-content: flex-end; /* aligns video to the right */
-  padding: 4em 7em 2em 0em; /* top, right, bottom, left */
+  border-radius: 30px; 
 }
 
 
@@ -80,15 +81,16 @@ body {
   display: flex;
   justify-content: space-between; /* or flex-end, center, etc. */
   align-items: center;
-  padding: 4em 7em 2em 0em;
+  padding: 5em 5em 5em 0em;
   gap: 2em; /* spacing between video and text */
 }
 
 .video-container2 iframe {
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
   height: auto;
   border-radius: 8px;
+  border-radius: 30px;
 }
 
 
