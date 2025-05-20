@@ -51,7 +51,7 @@ body {
 .sidebar {
   flex: 1;
   background-color: #f9f9f9;
-  padding: 100px;
+  padding: 0em 2em 2em 2em;
   border-radius: 30px;
   border-left: 2px solid #ccc;
 }
@@ -72,8 +72,10 @@ body {
   flex: 2;
   display: flex;
   align-items: ;
+  padding: 0em;
   justify-content: flex-end; /* aligns video to the right */
-  border-radius: 30px; 
+  
+border-radius: 30px; 
 }
 
 
@@ -320,7 +322,7 @@ body {
 
 .sidebar-nav ul {
   list-style-type: none;
-  padding: 0;
+  padding: -200;
 }
 
 .sidebar-nav li {
@@ -333,6 +335,7 @@ body {
   text-decoration: none;
   font-size: 18px;
   display: block;
+  
 }
 
 .sidebar-nav li a:hover {
