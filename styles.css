@@ -38,12 +38,12 @@ html, body {
 
 
 .content-area {
-    display: flex;
+  display: flex;
   justify-content: space-between; /* or flex-end, center, etc. */
   align-items: center;
-  padding: 4em 7em 2em 0em;
   gap: 2em; /* spacing between video and text */
 }
+
 
 
 .sidebar {
