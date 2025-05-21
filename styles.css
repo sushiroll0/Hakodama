@@ -52,7 +52,7 @@ html, body {
   padding: 0em 2em 2em 2em;
   border-radius: 30px;
   border-left: 2px solid #ccc;
-  
+  height: 300px;
   overflow: scroll;
 }
 .sidebar h2 {
