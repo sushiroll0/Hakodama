@@ -3,130 +3,106 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
+  <!--This is the Tab favicon-->
   <link rel="icon" href="hakodama.png" type="image/png">
-
-  <title>Hakodama</title>
   <!--All CSS goes here-->
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="animation.css">
-
-  <style>
-    /* TEMPORARY: Inline to ensure splash works instantly */
-    .main-content {
-      display: none;
-    }
-  </style>
+  <title>Hakodama</title>
 </head>
-<body>
-   <h2>Hakodama Services</h2>
-  <div class="page-wrapper"></div>
-  <!-- Splash Logo (Centered and Fullscreen) -->
-  <div class="splash">
-    <img src="hakodama.png" alt="Hakodama Logo" width="300">
-  </div>
-
-
-<!-- Hamburger Button -->
-<div id="hamburger">&#9776;</div>
-
-<!-- Sidebar Navigation -->
-<nav id="sidebar" class="sidebar-nav hidden">
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="blog.html">Blog</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
-</nav>
-
-
-
-
-  <!-- Site Content -->
-  <div class="wrapper main-content">
+  <body>
+       <div class="title">
+      <h2>Services</h2>
+      </div> 
+        <!-- Splash Logo (Centered and Fullscreen) -->
+        <div class="splash">
+          <img src="hakodama.png" alt="Hakodama Logo" width="300">
+        </div> 
+        
+           <!-- Site Content (the whole web display) -->
+      <div class="main-content">
+       
+        <!-- Hamburger Button -->
+         <div id="hamburger">&#9776;</div>
+      <!-- Sidebar Navigation -->
+       <nav id="sidebar" class="sidebar-nav hidden">
+         <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
     
-    <!-- Main Content -->
-    <main>
-      <!-- Your main content goes here -->
+       
+     <!-- Main Content -->
+<main>
+     <!-- Your main content goes here -->
 
- <!-- Section -->
-    <section class="dialog-box">
-      <!-- Your section content goes here -->
+     <!-- Section -->
+      <section class="dialog-box">
+     <!-- Your section content goes here -->
       YouTube Video 
 
-    </section>
+      </section>
 
-    <!-- Sidebar -->
-    <div class="content-area">
+     <!-- Sidebar -->
+      <div class="content-area">
 
-  <!-- Embedded YouTube Video -->
+     <!-- Embedded YouTube Video -->
     <div class="video-container">
-    <iframe 
-      class="youtube-video"
+     <iframe class="youtube-video"
       src="https://www.youtube.com/embed/5-8D5ILlhNE"
-      
       title="YouTube video player"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen>
-    </iframe>
+     </iframe>
     </div>  
 
 
       
-    <aside class="sidebar">
+  <aside class="sidebar">
     
      <!-- Optional sidebar content -->
-  <h2>Quotes of the Week</h2>
-      <div id="sidebar-text"></div> <!-- Optional sidebar content -->
-  <ol>
-    <li>"The only limit to our realization of tomorrow is our doubts of today." – Franklin D. Roosevelt</li>
-    <li>"Do not go where the path may lead, go instead where there is no path and leave a trail." – Ralph Waldo Emerson</li>
-    <li>"Whether you think you can or think you can’t, you’re right." – Henry Ford</li>
-    <li>"In the middle of every difficulty lies opportunity." – Albert Einstein</li>
-    <li>"Success is not final, failure is not fatal: It is the courage to continue that counts." – Winston Churchill</li>
-    <li>"Act as if what you do makes a difference. It does." – William James</li>
-    <li>"What lies behind us and what lies before us are tiny matters compared to what lies within us." – Ralph Waldo Emerson</li>
-    <li>"Believe you can and you're halfway there." – Theodore Roosevelt</li>
-    <li>"Your time is limited, so don't waste it living someone else's life." – Steve Jobs</li>
-    <li>"Happiness is not something ready made. It comes from your own actions." – Dalai Lama</li>
-  </ol> 
-</aside>
+       <h2>Sidebar</h2>
+       <div id="sidebar-text"></div> <!-- Optional sidebar content -->
+       Quote of the Day: "The only limit to our realization of tomorrow is our doubts of today." - Franklin D. Roosevelt
+  </aside>
     </main>
  
-  <!-- Footer -->
-    <footer>
+     <!-- Footer -->
+<footer>
 
-<div class="footer-wrapper"></div>
- <div class="video-container2">
-  <iframe 
-    class="youtube-video"
-    src="https://www.youtube.com/embed/Kc0Kthyo0hU"
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
- </div>
+     <div class="footer-wrapper"></div>
+     <div class="video-container2">
+      <iframe  class="youtube-video"
+       src="https://www.youtube.com/embed/Kc0Kthyo0hU"
+       title="YouTube video player"
+       frameborder="0"
+       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+       allowfullscreen>
+     </iframe>
+    </div>
 
-      <!-- Footer content goes here -->
+     <!-- Footer content goes here -->
       <p>&copy; 2023 Hakodama. All rights reserved.</p>
       <p> this website is under construction</p>
-    </footer>
-  </div>
+    
+</footer>
+    </div> <!-- end of main content class-->
 
-  <!-- All JS goes into script.js now -->
-  <script src="script.js"></script>
-<script src="animation.js" defer></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const hamburger = document.getElementById("hamburger");
-    const sidebar = document.getElementById("sidebar");
-
-    hamburger.addEventListener("click", () => {
+     <!-- All JS goes into script.js now -->
+     <script src="script.js"></script>
+     <script src="animation.js" defer></script>
+     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+      const hamburger = document.getElementById("hamburger");
+      const sidebar = document.getElementById("sidebar");
+      hamburger.addEventListener("click", () => {
       sidebar.classList.toggle("hidden");
     });
   });
-</script>
+     </script>
 
 
 
