@@ -27,17 +27,8 @@ body {
   ; /* Semi-transparent background */
 }
 
-.page-wrapper {
-  padding: 2em 4em 2em 4em;
-  max-width: 1200px;
-  margin: 0 auto; /* center it on large screens */
-}
-/* For QHD and ultra-wide displays */
-@media (min-width: 2000px) {
-  .page-wrapper {
-    padding: 2em 8em;
-  }
-}
+
+
 
 .content-area {
     display: flex;
@@ -51,11 +42,9 @@ body {
 .sidebar {
   flex: 1;
   background-color: #f9f9f9;
-  padding: 2em 2em 2em 2em;
+  padding: 0em 2em 2em 2em;
   border-radius: 30px;
   border-left: 2px solid #ccc;
-  height: 300px;
-  overflow: scroll;
 }
 .sidebar h2 {
   text-align: center;
@@ -113,14 +102,6 @@ border-radius: 30px;
 
 /* Blog HTML starts here */
 
-/* .nav-menu {
-  list-style: none;
-  display: flex;
-  gap: 200px;
-  justify-content: center;
-  padding: 0;
-  margin: 20px 0;
-} */
 
 .hashtag {
     color: #007bff;
@@ -290,13 +271,6 @@ border-radius: 30px;
 /* Blog HTML ends here */
 
 /* Hamburger Button */
-
-#layout {
-  display: flex;
-  flex-direction: row;
-  transition: all 0.3s ease;
-  width: 100%;
-}
 
 #hamburger {
   position: fixed;
