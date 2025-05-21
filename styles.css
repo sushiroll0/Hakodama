@@ -283,8 +283,8 @@ border-radius: 30px;
 
 #hamburger {
   position: fixed;
-  top: 20px;
-  left: 20px;
+  top: 0px;
+  left: 0px;
   color: black;
   font-size: 50px;
   cursor: pointer;
