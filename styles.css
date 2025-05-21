@@ -94,20 +94,9 @@ border-radius: 30px;
   border-radius: 8px;
   border-radius: 30px;
 }
-
-
-
-
-
-
-
-
 /* INDEX HTML ends here */
 
-
-
-
-
+////////split
 
 /* Blog HTML starts here */
 
@@ -279,7 +268,7 @@ border-radius: 30px;
 
 /* Blog HTML ends here */
 
-/* Hamburger Button */
+//////* Hamburger Button *///////
 
 #hamburger {
   position: fixed;
