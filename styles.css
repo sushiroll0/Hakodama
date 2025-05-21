@@ -1,121 +1,339 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta charset="UTF-8">
-  <!--This is the Tab favicon-->
-  <link rel="icon" href="hakodama.png" type="image/png">
-  <!--All CSS goes here-->
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="animation.css">
-  <title>Hakodama</title>
-</head>
-  <body>
-       
-      <h2 class="title">Services</h2>
-     
-        <!-- Splash Logo (Centered and Fullscreen) -->
-        <div class="splash">
-          <img src="hakodama.png" alt="Hakodama Logo" width="300">
-        </div> 
-        
-           <!-- Site Content (the whole web display) -->
-      <div class="main-content">
-       
-        <!-- Hamburger Button -->
-         <div id="hamburger">&#9776;</div>
-      <!-- Sidebar Navigation -->
-       <nav id="sidebar" class="sidebar-nav hidden">
-         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </nav>
-    
-       
-     <!-- Main Content -->
-<main>
-     <!-- Your main content goes here -->
+/* Index HTML starts here */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
 
-     <!-- Section -->
-      <section class="dialog-box">
-     <!-- Your section content goes here -->
-      YouTube Video 
+.title {
+  padding: 0.01em 3em;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-weight: bold;
+  display: inline-block;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
 
-      </section>
-
-     <!-- Sidebar -->
-      <div class="content-area">
-
-     <!-- Embedded YouTube Video -->
-    <div class="video-container">
-     <iframe class="youtube-video"
-      src="https://www.youtube.com/embed/5-8D5ILlhNE"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-     </iframe>
-    </div>  
-
-
-      
-  <aside class="sidebar">
-
-     <!-- Optional sidebar content -->
-  <h2>Quotes of the Week</h2>
-      <div id="sidebar-text"></div> <!-- Optional sidebar content -->
-  <ol>
-    <li>"The only limit to our realization of tomorrow is our doubts of today." – Franklin D. Roosevelt</li>
-    <li>"Do not go where the path may lead, go instead where there is no path and leave a trail." – Ralph Waldo Emerson</li>
-    <li>"Whether you think you can or think you can’t, you’re right." – Henry Ford</li>
-    <li>"In the middle of every difficulty lies opportunity." – Albert Einstein</li>
-    <li>"Success is not final, failure is not fatal: It is the courage to continue that counts." – Winston Churchill</li>
-    <li>"Act as if what you do makes a difference. It does." – William James</li>
-    <li>"What lies behind us and what lies before us are tiny matters compared to what lies within us." – Ralph Waldo Emerson</li>
-    <li>"Believe you can and you're halfway there." – Theodore Roosevelt</li>
-    <li>"Your time is limited, so don't waste it living someone else's life." – Steve Jobs</li>
-    <li>"Happiness is not something ready made. It comes from your own actions." – Dalai Lama</li>
-  </ol>
-  </aside>
-    </main>
- 
-     <!-- Footer -->
-<footer>
-
-     <div class="footer-wrapper"></div>
-     <div class="video-container2">
-      <iframe  class="youtube-video"
-       src="https://www.youtube.com/embed/Kc0Kthyo0hU"
-       title="YouTube video player"
-       frameborder="0"
-       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-       allowfullscreen>
-     </iframe>
-    </div>
-
-     <!-- Footer content goes here -->
-      <p>&copy; 2023 Hakodama. All rights reserved.</p>
-      <p> this website is under construction</p>
-    
-</footer>
-    </div> <!-- end of main content class-->
-
-     <!-- All JS goes into script.js now -->
-     <script src="script.js"></script>
-     <script src="animation.js" defer></script>
-     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-      const hamburger = document.getElementById("hamburger");
-      const sidebar = document.getElementById("sidebar");
-      hamburger.addEventListener("click", () => {
-      sidebar.classList.toggle("hidden");
-    });
-  });
-     </script>
+.dialog-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+ /* Full viewport height */
+  ; /* Semi-transparent background */
+}
 
 
 
-</body>
-</html>
+
+.content-area {
+    display: flex;
+  justify-content: space-between; /* or flex-end, center, etc. */
+  align-items: center;
+  padding: 4em 7em 2em 0em;
+  gap: 2em; /* spacing between video and text */
+}
+
+
+.sidebar {
+  flex: 1;
+  background-color: #f9f9f9;
+  padding: 0em 2em 2em 2em;
+  border-radius: 30px;
+  border-left: 2px solid #ccc;
+  
+  overflow: scroll;
+}
+.sidebar h2 {
+  text-align: center;
+}
+
+
+.youtube-video {
+
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 16 / 9;
+  border: none;
+}
+
+.video-container iframe {
+  flex: 2;
+  display: flex;
+  align-items: ;
+  padding: 0em;
+  justify-content: flex-end; /* aligns video to the right */
+  
+border-radius: 30px; 
+}
+
+
+.footer-wrapper {
+  display: flex;
+  justify-content: space-between; /* or flex-end, center, etc. */
+  align-items: center;
+  padding: 5em 5em 5em 0em;
+  gap: 2em; /* spacing between video and text */
+}
+
+.video-container2 iframe {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 8px;
+  border-radius: 30px;
+}
+
+
+
+
+
+
+
+
+/* INDEX HTML ends here */
+
+
+
+
+
+
+/* Blog HTML starts here */
+
+
+.hashtag {
+    color: #007bff;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .hashtag:hover {
+    text-decoration: underline;
+  }
+  
+  #search-bar {
+    width: 50%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+
+.write-a-blog-post {
+  font-size: 32px;
+  text-align: center;     /* center the text inside the h1 */
+  width: fit-content;     /* or a specific width like 50% */
+  margin: 20px auto;      /* THIS centers the block itself horizontally */
+}
+
+.Recent-Posts {
+  font-size: 20px;
+  text-align: center;     /* center the text inside the h1 */
+  width: fit-content;     /* or a specific width like 50% */
+  margin: 20px auto;      /* THIS centers the block itself horizontally */
+}
+
+.blog-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.blog-form input[type="text"],
+.blog-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.blog-form textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.file-post-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* right-aligns both file input and button */
+  margin-top: 10px;
+  gap: 8px; /* space between file input and Post button */
+}
+
+.file-post-wrapper input[type="file"] {
+  font-size: 14px;
+  padding: 6px 10px;    /* Internal spacing */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 60%;           /* Shrinks the file input (adjust as needed) */
+  max-width: 300px;     /* Optional: limit max width */
+  align-self: flex-end; /* Keeps it aligned right */
+}
+
+#submit-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+
+
+#submit-button:hover {
+  background-color: #40bfbf;
+}
+
+
+.post-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2em 4em;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 🖥️ QHD / Ultra-wide screens (1920px and up) */
+@media (min-width: 1920px) {
+  .post-container {
+    padding: 2em 6em; /* Give it more breathing room on big screens */
+  }
+}
+
+/* 📱 Mobile optimization */
+@media (max-width: 768px) {
+  .post-container {
+    padding: 1.5em 1em; /* Reduce horizontal padding for small screens */
+  }
+}
+
+/* Post content */
+.blog-post-content {
+  white-space: pre-wrap;
+  font-family: monospace; /* optional */
+  line-height: 1.5;
+}
+
+
+
+/*copy posts or code */
+
+.code-wrapper {
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.copy-code-button {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 4px 8px;
+  cursor: pointer;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.copy-code-button:hover {
+  opacity: 1;
+}
+
+.blog-post-content {
+  white-space: pre-wrap;
+  font-family: monospace;
+  line-height: 1.5;
+  padding: 12px;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+
+/* add section here */
+
+  .nav-menu li a:hover {
+  color: #ffd700;
+}
+
+/* Blog HTML ends here */
+
+/* Hamburger Button */
+
+#hamburger {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  color: black;
+  font-size: 50px;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+/* Sidebar Navigation */
+.sidebar-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* 50% transparent black */
+  padding-top: 60px;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  overflow-x: hidden;
+}
+
+.sidebar-nav ul {
+  list-style-type: none;
+  padding: -200;
+}
+
+.sidebar-nav li {
+  padding: 15px;
+  text-align: left;
+}
+
+.sidebar-nav li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  
+}
+
+.sidebar-nav li a:hover {
+  background-color: #575757;
+}
+
+/* Hide Sidebar by default */
+.hidden {
+  transform: translateX(-220px);
+}
+
+/* Push content when sidebar is visible */
+#layout.sidebar-open .sidebar-nav {
+  width: 200px;
+  padding: 60px 20px;
+}
