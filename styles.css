@@ -200,7 +200,13 @@ border-radius: 30px;
 #submit-button:hover {
   background-color: #40bfbf;
 }
-
+/* aligns the time stamp*/
+.timestamp {
+  margin-top: 1em;
+  font-size: 0.85em;
+  color: #555;
+  text-align: right;
+}
 
 .post-container {
   max-width: 800px;
