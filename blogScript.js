@@ -111,7 +111,7 @@ async function fetchPosts() {
       <pre class="blog-post-content">${post.content}</pre> 
       </div>
       ${mediaHtml}
-      <small>${
+     <div class="timestamp">${
         post.posted_at && !isNaN(Date.parse(post.posted_at))
           ? (() => {
               const date = new Date(post.posted_at);
@@ -122,7 +122,7 @@ async function fetchPosts() {
               });
             })()
           : "(no date)"
-      }</small>
+      }</div>
       <br>
       <button class="edit-post" data-id="${post.id}" data-title="${encodeURIComponent(post.title)}" data-content="${encodeURIComponent(post.content)}">✏️ Edit</button>
       <button class="delete-post" data-id="${post.id}">🗑️ Delete</button>
