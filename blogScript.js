@@ -96,6 +96,10 @@ async function fetchPosts() {
     postEl.classList.add('blog-post');
 
     let mediaHtml = '';
+// This part was added right before this commit. I had a loop that did not recognize the .mov file. 
+// displayed as an image. So it would play as a video but without sound, stop, or pause menu. previous code is in this commit
+// Commit 5378536 look at your changes in this commits. I will add all comments there. 
+    
     const videoExtensions = ['.mp4', '.webm', '.mov'];
 const isVideo = videoExtensions.some(ext => post.media.toLowerCase().endsWith(ext));
 
