@@ -103,16 +103,24 @@ async function fetchPosts() {
     const videoExtensions = ['.mp4', '.webm', '.mov'];
 const isVideo = videoExtensions.some(ext => post.media.toLowerCase().endsWith(ext));
 
-if (isVideo) {
-  mediaHtml = `
-    <video controls width="300">
-      <source src="${post.media}" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  `;
-} else {
-  mediaHtml = `<img src="${post.media}" width="300" />`;
+if (post.media) {
+  const videoExtensions = ['.mp4', '.webm', '.mov', '.ts'];
+  const isVideo = videoExtensions.some(ext =>
+    post.media.toLowerCase().endsWith(ext)
+  );
+
+  if (isVideo) {
+    mediaHtml = `
+      <video controls width="300">
+        <source src="${post.media}" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    `;
+  } else {
+    mediaHtml = `<img src="${post.media}" width="300" />`;
+  }
 }
+
 
 // !!!Attention!!! line 109 allows copy code, and 110 formats text content to be just as it was posted by user. Line 111 needs this: ${post.content}
     postEl.innerHTML = `
