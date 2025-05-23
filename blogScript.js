@@ -100,7 +100,7 @@ async function fetchPosts() {
 // displayed as an image. So it would play as a video but without sound, stop, or pause menu. previous code is in this commit
 // Commit 5378536 look at your changes in this commits. I will add all comments there. 
     
-    const videoExtensions = ['.mp4', '.webm', '.mov', '.ts'];
+    const videoExtensions = ['.mp4', '.webm', '.mov'];
 const isVideo = videoExtensions.some(ext => post.media.toLowerCase().endsWith(ext));
 
 if (isVideo) {
