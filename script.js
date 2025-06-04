@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // ===============================
 // 🧰 ADMIN TOOLS
 // ===============================
-const ADMIN_PASS = "$Sushi12345"; // Match this with server.js
+const ADMIN_PASS = ""; // Match this with server.js   // you can add a password here
 
 async function deletePost(id) {
   const confirmed = confirm("Are you sure you want to delete this post?");
